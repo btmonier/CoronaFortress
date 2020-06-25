@@ -77,7 +77,7 @@ public class CoronaFortress extends Canvas implements Runnable {
 
     private int[] anim = {0, 2, 0, 3};
     private void render(Bitmap screen) {
-        int frame = (step / 15) % 4;
+        int frame = (step / 10) % 4;
         screen.draw(Art.i.sprites[anim[frame]][0], 0, 0);
     }
 
