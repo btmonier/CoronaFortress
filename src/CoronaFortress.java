@@ -77,7 +77,7 @@ public class CoronaFortress extends Canvas implements Runnable {
 
 
     private void render(Bitmap screen) {
-        int frame = (step / 10) % 4;
+        int frame = (step / 10) % 8;
         if (frame == 2) frame = 0;
         if (frame == 3) frame = 2;
         for (int x = 0; x < WIDTH / 16; x++) {
