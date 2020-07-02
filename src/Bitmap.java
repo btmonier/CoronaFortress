@@ -36,11 +36,14 @@ public class Bitmap {
         if (y1 > h) y1 = h;
 
         for (int y = y0; y < y1; y++) {
-            int sp = (y - y0) * b.w + xp;
+            int sp = (y - y0) * b.w - xp;
             int dp = (y) * w;
 
             for (int x = x0; x < x1; x++) {
-                pixels[dp+x] = b.pixels[sp+x];
+                int c = b.pixels[sp + x];
+                if (c < 0) {
+                    pixels[dp + x] = b.pixels[sp + x];
+                }
             }
         }
     }
