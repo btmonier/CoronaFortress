@@ -1,5 +1,8 @@
 package com.btmonier.coronafortress;
 
+import com.btmonier.coronafortress.entity.*;
+import com.btmonier.coronafortress.level.Level;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -15,6 +18,7 @@ public class CoronaFortress extends Canvas implements Runnable {
     private boolean keepRunning = true;
     private BufferedImage screenImage;
     private Bitmap screenBitmap;
+    private Level level;
 
     public CoronaFortress() {
         Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
@@ -36,6 +40,17 @@ public class CoronaFortress extends Canvas implements Runnable {
         Art.init();
         screenImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
         screenBitmap = new Bitmap(screenImage);
+
+        level = new Level();
+//        level.add(new Scout());
+//        level.add(new Soldier());
+//        level.add(new Pyro());
+//        level.add(new Demoman());
+//        level.add(new Heavy());
+//        level.add(new Engineer());
+//        level.add(new Medic());
+//        level.add(new Sniper());
+//        level.add(new Spy());
     }
 
     public void run() {
@@ -93,6 +108,7 @@ public class CoronaFortress extends Canvas implements Runnable {
     public int step = 0;
     private void tick() {
         step++;
+        level.tick();
     }
 
     public static void main(String[] args) {
