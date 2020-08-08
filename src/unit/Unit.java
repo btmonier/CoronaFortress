@@ -1,9 +1,9 @@
 package com.btmonier.coronafortress.unit;
 
 import com.btmonier.coronafortress.*;
-import com.btmonier.coronafortress.entity.Mob;
+import com.btmonier.coronafortress.entity.Entity;
 
-public class Unit extends Mob {
+public class Unit extends Entity {
     private int ySpriteIndex;
     public Unit(int ySpriteIndex) {
         this.ySpriteIndex = ySpriteIndex;
