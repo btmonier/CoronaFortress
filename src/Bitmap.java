@@ -6,6 +6,9 @@ import java.awt.image.DataBufferInt;
 public class Bitmap {
     public final int[] pixels;
     public final int w, h;
+    public int xOffs;
+    public int yOffs;
+    public boolean xFlip = false;
 
     public Bitmap(int w, int h) {
         this.w = w;
@@ -26,6 +29,8 @@ public class Bitmap {
     }
 
     public void draw(Bitmap b, int xp, int yp) {
+        xp += xOffs;
+        yp += yOffs;
         int x0 = xp;
         int x1 = xp + b.w;
         int y0 = yp;
@@ -35,16 +40,33 @@ public class Bitmap {
         if (x1 > w) x1 = w;
         if (y1 > h) y1 = h;
 
-        for (int y = y0; y < y1; y++) {
-            int sp = (y - y0) * b.w - xp;
-            int dp = (y) * w;
+        if (xFlip) {
+            for (int y = y0; y < y1; y++) {
+                int sp = (y - y0) * b.w - xp;
+                int dp = (y) * w + x0 + b.w;
 
-            for (int x = x0; x < x1; x++) {
-                int c = b.pixels[sp + x];
-                if (c < 0) {
-                    pixels[dp + x] = b.pixels[sp + x];
+                for (int x = x0; x < x1; x++) {
+                    int c = b.pixels[sp + x];
+                    if (c < 0) {
+                        pixels[dp - x] = b.pixels[sp + x];
+                    }
+                }
+            }
+        } else {
+            for (int y = y0; y < y1; y++) {
+                int sp = (y - y0) * b.w - xp;
+                int dp = (y) * w;
+
+                for (int x = x0; x < x1; x++) {
+                    int c = b.pixels[sp + x];
+                    if (c < 0) {
+                        pixels[dp + x] = b.pixels[sp + x];
+                    }
                 }
             }
         }
+    }
+
+    public void setPixel(int i, int i1, int i2) {
     }
 }
