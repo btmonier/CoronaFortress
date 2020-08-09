@@ -13,6 +13,7 @@ public class Art {
     }
 
     public Bitmap[][] sprites = loadAndCut("/chars.png", 16, 16);
+    public Bitmap[][] cursors = loadAndCut("/cursors.png", 16, 16);
 
     private Bitmap[][] loadAndCut(String name, int sw, int sh) {
         BufferedImage img;
