@@ -2,6 +2,7 @@ package com.btmonier.coronafortress;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.Arrays;
 
 public class Bitmap {
     public final int[] pixels;
@@ -67,6 +68,9 @@ public class Bitmap {
         }
     }
 
+    public void clear(int color) {
+        Arrays.fill(pixels, color);
+    }
     public void setPixel(int i, int i1, int i2) {
     }
 }
